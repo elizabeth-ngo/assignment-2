@@ -1,0 +1,1105 @@
+/* =========================================================
+   Savour - Restaurant Discovery & Reservation Platform
+   Main Stylesheet
+   COS10005 Assignment 2 - Semester 1, 2026
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. CSS RESET & BASE
+   --------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------------
+   2. DESIGN TOKENS (COLOURS, FONTS, SPACING)
+   These are reusable variables used across all pages.
+   --------------------------------------------------------- */
+:root {
+    /* Colours - warm, restaurant-inspired palette */
+    --bg-cream: #FBF7F0;
+    --bg-warm:  #F0E6D2;
+    --wine:     #6B2737;
+    --wine-dark:#4A1A26;
+    --terracotta:#C04D2F;
+    --gold:     #C9A66B;
+    --ink:      #2A1F1A;
+    --muted:    #6B5D52;
+    --white:    #FFFFFF;
+    --error:    #B91C1C;
+    --success:  #15803D;
+    --border:   #E5DCC9;
+
+    /* Typography */
+    --font-display: 'Fraunces', 'Georgia', serif;
+    --font-body:    'Outfit', 'Helvetica Neue', sans-serif;
+
+    /* Spacing scale */
+    --sp-1: 0.5rem;
+    --sp-2: 1rem;
+    --sp-3: 1.5rem;
+    --sp-4: 2rem;
+    --sp-5: 3rem;
+    --sp-6: 4rem;
+    --sp-7: 6rem;
+
+    /* Layout */
+    --max-width: 1200px;
+    --radius:    8px;
+    --radius-lg: 16px;
+    --shadow:    0 4px 16px rgba(42, 31, 26, 0.08);
+    --shadow-lg: 0 12px 40px rgba(42, 31, 26, 0.12);
+}
+
+/* ---------------------------------------------------------
+   3. BASE TYPOGRAPHY
+   --------------------------------------------------------- */
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background-color: var(--bg-cream);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; }
+
+p { color: var(--muted); }
+
+a {
+    color: var(--wine);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover { color: var(--terracotta); }
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------------------------------------------------------
+   4. LAYOUT HELPERS
+   --------------------------------------------------------- */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--sp-3);
+}
+
+.section {
+    padding: var(--sp-6) 0;
+}
+
+/* ---------------------------------------------------------
+   5. HEADER & NAVIGATION
+   Consistent across every page.
+   The .active class highlights the current page.
+   --------------------------------------------------------- */
+.site-header {
+    background-color: var(--bg-cream);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    background-color: rgba(251, 247, 240, 0.92);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sp-2) var(--sp-3);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--wine);
+    letter-spacing: -0.02em;
+}
+
+.logo span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--sp-3);
+}
+
+.main-nav a {
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: var(--sp-1) 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover { color: var(--wine); }
+
+/* Underline effect for navigation items */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--wine);
+    transition: width 0.25s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a.active {
+    color: var(--wine);
+    font-weight: 600;
+}
+
+/* Mobile menu toggle (hidden on desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   6. BUTTONS
+   --------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--wine-dark);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--wine);
+    border: 1.5px solid var(--wine);
+}
+
+.btn-secondary:hover {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--ink);
+}
+
+.btn-gold:hover {
+    background-color: #B8915A;
+    color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   7. HOME PAGE - HERO
+   --------------------------------------------------------- */
+.hero {
+    background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+    padding: var(--sp-7) 0 var(--sp-6);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--sp-5);
+    align-items: center;
+}
+
+.hero-text .eyebrow {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background-color: var(--wine);
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--sp-2);
+    font-weight: 500;
+}
+
+.hero-text h1 {
+    margin-bottom: var(--sp-2);
+}
+
+.hero-text h1 em {
+    font-style: italic;
+    color: var(--wine);
+    font-weight: 400;
+}
+
+.hero-text p.lead {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: var(--sp-4);
+    max-width: 520px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4 / 5;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------------------------------------------------------
+   8. HOME PAGE - FEATURES / VALUES
+   --------------------------------------------------------- */
+.values {
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--sp-5);
+}
+
+.section-title .eyebrow {
+    display: block;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    margin-bottom: var(--sp-1);
+    font-weight: 500;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+}
+
+.value-card {
+    text-align: center;
+    padding: var(--sp-3);
+}
+
+.value-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--sp-2);
+    background-color: var(--bg-warm);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--wine);
+}
+
+.value-card h3 {
+    margin-bottom: var(--sp-1);
+}
+
+/* ---------------------------------------------------------
+   9. HOME PAGE - SERVICES
+   --------------------------------------------------------- */
+.services {
+    background-color: var(--bg-cream);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-3);
+}
+
+.service-card {
+    background-color: var(--white);
+    padding: var(--sp-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card .step {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gold);
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: var(--sp-2);
+}
+
+.service-card h3 {
+    margin-bottom: var(--sp-1);
+}
+
+/* ---------------------------------------------------------
+   10. HOME PAGE - TARGET USERS
+   --------------------------------------------------------- */
+.audience {
+    background-color: var(--wine);
+    color: var(--white);
+}
+
+.audience h2 { color: var(--white); }
+.audience p { color: rgba(255, 255, 255, 0.85); }
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-3);
+    margin-top: var(--sp-4);
+}
+
+.audience-card {
+    text-align: center;
+    padding: var(--sp-2);
+}
+
+.audience-card .icon {
+    font-size: 2rem;
+    margin-bottom: var(--sp-1);
+}
+
+.audience-card h4 {
+    color: var(--gold);
+    margin-bottom: var(--sp-1);
+    font-family: var(--font-display);
+    font-style: italic;
+}
+
+/* ---------------------------------------------------------
+   11. PAGE BANNER (used on inner pages)
+   --------------------------------------------------------- */
+.page-banner {
+    background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+    padding: var(--sp-5) 0 var(--sp-4);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-banner .eyebrow {
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: var(--sp-1);
+}
+
+.page-banner h1 em {
+    font-style: italic;
+    color: var(--wine);
+    font-weight: 400;
+}
+
+.page-banner p {
+    max-width: 600px;
+    margin: var(--sp-2) auto 0;
+}
+
+/* ---------------------------------------------------------
+   12. RESTAURANT CARDS (restaurants.html)
+   --------------------------------------------------------- */
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-4);
+}
+
+.restaurant-card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.restaurant-card .card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--bg-warm);
+}
+
+.restaurant-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.restaurant-card:hover .card-image img {
+    transform: scale(1.04);
+}
+
+.restaurant-card .card-body {
+    padding: var(--sp-3);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cuisine-tag {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    background-color: var(--bg-warm);
+    color: var(--wine);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-1);
+    align-self: flex-start;
+}
+
+.restaurant-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--sp-1);
+}
+
+.restaurant-card .description {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: var(--sp-2);
+}
+
+.dishes-list {
+    list-style: none;
+    margin-bottom: var(--sp-2);
+    padding-top: var(--sp-2);
+    border-top: 1px dashed var(--border);
+}
+
+.dishes-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+}
+
+.dishes-list .dish-name { color: var(--ink); }
+.dishes-list .dish-price {
+    color: var(--wine);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--sp-2) 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    margin-bottom: var(--sp-2);
+}
+
+.card-meta .label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+}
+
+.card-meta .value {
+    color: var(--ink);
+    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+}
+
+.restaurant-card .reserve-btn {
+    margin-top: auto;
+}
+
+/* ---------------------------------------------------------
+   13. FORMS (registration, reservation, recommend)
+   --------------------------------------------------------- */
+.form-container {
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: var(--sp-5);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.form-group {
+    margin-bottom: var(--sp-3);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-3);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 0.95rem;
+}
+
+label .required {
+    color: var(--terracotta);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: var(--bg-cream);
+    color: var(--ink);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--wine);
+    background-color: var(--white);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Radio + Checkbox custom styles */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+}
+
+.radio-option,
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--wine);
+    cursor: pointer;
+}
+
+/* Error messages */
+.error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: none;
+    font-weight: 500;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Show red border when field has error */
+input.error-field,
+select.error-field,
+textarea.error-field {
+    border-color: var(--error);
+    background-color: #FEF2F2;
+}
+
+/* Success summary at top of form */
+.form-summary {
+    padding: var(--sp-2);
+    border-radius: var(--radius);
+    margin-bottom: var(--sp-3);
+    display: none;
+}
+
+.form-summary.success {
+    background-color: #F0FDF4;
+    border: 1px solid var(--success);
+    color: var(--success);
+    display: block;
+}
+
+.form-summary.error {
+    background-color: #FEF2F2;
+    border: 1px solid var(--error);
+    color: var(--error);
+    display: block;
+}
+
+/* Form section divider */
+.form-section-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--wine);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-warm);
+    margin-bottom: var(--sp-3);
+    margin-top: var(--sp-3);
+}
+
+.form-section-title:first-of-type {
+    margin-top: 0;
+}
+
+/* Conditional fields - hidden by default, shown by JS */
+.conditional-field {
+    display: none;
+}
+
+.conditional-field.active {
+    display: block;
+}
+
+/* Helper text */
+.helper-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+}
+
+/* Deposit display box */
+.deposit-display {
+    background-color: var(--bg-warm);
+    padding: var(--sp-2);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--gold);
+    margin-bottom: var(--sp-3);
+}
+
+.deposit-display .label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.deposit-display .amount {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--wine);
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   14. RECOMMENDATION PAGE
+   --------------------------------------------------------- */
+.recommend-form {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+#recommendation-results {
+    margin-top: var(--sp-5);
+    display: none;
+}
+
+#recommendation-results.show { display: block; }
+
+.results-heading {
+    text-align: center;
+    margin-bottom: var(--sp-4);
+}
+
+.no-results {
+    text-align: center;
+    padding: var(--sp-4);
+    background-color: var(--bg-warm);
+    border-radius: var(--radius-lg);
+    color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   15. BILL CALCULATOR (bonus)
+   --------------------------------------------------------- */
+.bill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.bill-form, .bill-summary {
+    background-color: var(--white);
+    padding: var(--sp-4);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.bill-summary {
+    background-color: var(--wine);
+    color: var(--white);
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.bill-summary h3 { color: var(--white); }
+
+.bill-summary .line {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.95rem;
+}
+
+.bill-summary .line:last-of-type { border-bottom: none; }
+
+.bill-summary .total {
+    margin-top: var(--sp-3);
+    padding-top: var(--sp-2);
+    border-top: 2px solid var(--gold);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--gold);
+    display: flex;
+    justify-content: space-between;
+}
+
+.dish-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.dish-row label {
+    flex: 1;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.dish-row .dish-name { color: var(--ink); }
+.dish-row .dish-price {
+    color: var(--wine);
+    font-weight: 600;
+    margin-right: var(--sp-2);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------
+   16. FOOTER
+   --------------------------------------------------------- */
+.site-footer {
+    background-color: var(--ink);
+    color: rgba(255, 255, 255, 0.75);
+    padding: var(--sp-5) 0 var(--sp-3);
+    margin-top: var(--sp-6);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-4);
+}
+
+.footer-brand .logo {
+    color: var(--gold);
+    margin-bottom: var(--sp-2);
+    display: inline-block;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 400px;
+}
+
+.footer-grid h4 {
+    color: var(--white);
+    font-family: var(--font-display);
+    margin-bottom: var(--sp-2);
+    font-size: 1.1rem;
+}
+
+.footer-grid ul {
+    list-style: none;
+}
+
+.footer-grid ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-grid a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.footer-grid a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--sp-2);
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---------------------------------------------------------
+   17. RESPONSIVE DESIGN
+   - Desktop:  >= 1024px (default styles above)
+   - Tablet:   768px to 1023px
+   - Mobile:   <= 767px
+   --------------------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 1023px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-4);
+    }
+
+    .hero-image {
+        max-width: 500px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .restaurants-grid {
+        grid-template-columns: 1fr;
+        gap: var(--sp-3);
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--sp-3);
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bill-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bill-summary {
+        position: static;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    :root {
+        --sp-5: 2rem;
+        --sp-6: 3rem;
+        --sp-7: 4rem;
+    }
+
+    body { font-size: 15px; }
+
+    .container { padding: 0 var(--sp-2); }
+
+    /* Mobile navigation - convert to dropdown */
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: var(--white);
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius);
+        padding: var(--sp-2);
+        min-width: 200px;
+        display: none;
+        border: 1px solid var(--border);
+    }
+
+    .main-nav.open { display: block; }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: var(--sp-1);
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 0.5rem 0.8rem;
+        width: 100%;
+    }
+
+    .main-nav a::after { display: none; }
+
+    .main-nav a.active {
+        background-color: var(--bg-warm);
+        border-radius: var(--radius);
+    }
+
+    /* Layout stacks */
+    .values-grid,
+    .audience-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-container { padding: var(--sp-3); }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-brand p { margin: 0 auto; }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn { width: 100%; }
+
+    .radio-group,
+    .checkbox-group {
+        flex-direction: column;
+        gap: var(--sp-1);
+    }
+}
+
+/* ---------------------------------------------------------
+   18. ACCESSIBILITY
+   --------------------------------------------------------- */
+*:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* Skip-to-content link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--wine);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.skip-link:focus { top: 0; color: var(--white); }
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
