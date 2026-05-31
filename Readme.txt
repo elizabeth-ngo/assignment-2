@@ -252,4 +252,4 @@ render natively on all platforms.
 - Concepts: Layout inspiration drawn from typical restaurant booking platforms (OpenTable,
 TheFork) but all HTML/CSS/JS code is written from scratch for this assignment.
 
-========================================================== End of Readme.txt ===========================================================
+--End of Readme.txt--
