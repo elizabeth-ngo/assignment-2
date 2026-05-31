@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a free Savour account to save your favourite restaurants and unlock personalised recommendations.">
+    <title>Register - Savour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header & Navigation (active = Register) ===== -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">Savour<span>&amp;Co</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="reservation.html">Reserve</a></li>
+                    <li><a href="bill.html">Bill Calculator</a></li>
+                    <li><a href="register.html" class="active">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Page Banner ===== -->
+        <section class="page-banner">
+            <div class="container">
+                <span class="eyebrow">Join Savour</span>
+                <h1>Create your <em>account</em></h1>
+                <p>It only takes a minute. Save favourites, get personalised recommendations, and reserve faster next time.</p>
+            </div>
+        </section>
+
+        <!-- ===== Registration Form ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="form-container">
+                    <!-- Summary message - shown by JS on success/failure -->
+                    <div id="form-summary" class="form-summary"></div>
+
+                    <!--
+                        novalidate disables the browser's built-in validation
+                        so our JavaScript can handle everything.
+                    -->
+                    <form id="register-form" novalidate>
+
+                        <h2 class="form-section-title">Account Details</h2>
+
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for="username">Username <span class="required">*</span></label>
+                            <input type="text" id="username" name="username" placeholder="e.g. foodlover_99">
+                            <p class="helper-text">At least 5 characters. Letters, numbers, and underscores only.</p>
+                            <p class="error-message" id="error-username"></p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com">
+                            <p class="error-message" id="error-email"></p>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phone">Phone number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="0412345678">
+                            <p class="helper-text">Digits only, 8–15 digits in total.</p>
+                            <p class="error-message" id="error-phone"></p>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password <span class="required">*</span></label>
+                            <input type="password" id="password" name="password">
+                            <p class="helper-text">Min 10 characters with uppercase, lowercase, a number, and a special character.</p>
+                            <p class="error-message" id="error-password"></p>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm password <span class="required">*</span></label>
+                            <input type="password" id="confirm-password" name="confirm-password">
+                            <p class="error-message" id="error-confirm-password"></p>
+                        </div>
+
+                        <h2 class="form-section-title">Personal Details</h2>
+
+                        <!-- Gender -->
+                        <div class="form-group">
+                            <label>Gender <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="gender" value="female"> Female
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="gender" value="male"> Male
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="gender" value="non-binary"> Non-binary
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="gender" value="prefer-not"> Prefer not to say
+                                </label>
+                            </div>
+                            <p class="error-message" id="error-gender"></p>
+                        </div>
+
+                        <!-- Dietary preferences (optional, multi-select via checkboxes) -->
+                        <div class="form-group">
+                            <label>Dietary preferences (optional)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="dietary" value="vegan"> Vegan
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="dietary" value="vegetarian"> Vegetarian
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="dietary" value="halal"> Halal
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="dietary" value="gluten-free"> Gluten free
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Country / Region -->
+                        <div class="form-group">
+                            <label for="country">Country / Region <span class="required">*</span></label>
+                            <select id="country" name="country">
+                                <option value="">-- Select your country --</option>
+                                <option value="AU">Australia</option>
+                                <option value="NZ">New Zealand</option>
+                                <option value="VN">Vietnam</option>
+                                <option value="US">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="SG">Singapore</option>
+                                <option value="JP">Japan</option>
+                                <option value="CN">China</option>
+                                <option value="IN">India</option>
+                                <option value="OTHER">Other</option>
+                            </select>
+                            <p class="error-message" id="error-country"></p>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem;">
+                            Create My Account
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Savour<span>&amp;Co</span></div>
+                    <p>Connecting diners with their next favourite table since 2026.</p>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="restaurants.html">Restaurants</a></li>
+                        <li><a href="recommend.html">Recommend</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="bill.html">Bill Calculator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savour&amp;Co. Built for COS10005 Web Development - Swinburne University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

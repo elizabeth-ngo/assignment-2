@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get personalised restaurant recommendations based on your dietary preferences, budget, and dining occasion.">
+    <title>Get a Recommendation - Savour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header & Navigation (active = Recommend) ===== -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">Savour<span>&amp;Co</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="recommend.html" class="active">Recommend</a></li>
+                    <li><a href="reservation.html">Reserve</a></li>
+                    <li><a href="bill.html">Bill Calculator</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Page Banner ===== -->
+        <section class="page-banner">
+            <div class="container">
+                <span class="eyebrow">Personalised For You</span>
+                <h1>Find your <em>perfect match</em></h1>
+                <p>Tell us a little about your meal — we'll do the rest. Our recommender filters restaurants by dietary needs, budget, and dining purpose.</p>
+            </div>
+        </section>
+
+        <!-- ===== Recommendation Form ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="recommend-form">
+                    <div class="form-container">
+                        <form id="recommend-form" novalidate>
+                            <h2 class="form-section-title">Tell us what you want</h2>
+
+                            <!-- Dietary preference -->
+                            <div class="form-group">
+                                <label for="dietary">Dietary preference</label>
+                                <select id="dietary" name="dietary" required>
+                                    <option value="none">None / No specific requirement</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="halal">Halal</option>
+                                </select>
+                            </div>
+
+                            <!-- Budget range -->
+                            <div class="form-group">
+                                <label for="budget">Budget per person</label>
+                                <select id="budget" name="budget" required>
+                                    <option value="low">$ — Up to $50 per person</option>
+                                    <option value="mid">$$ — Between $50 and $80 per person</option>
+                                    <option value="high">$$$ — Above $80 per person</option>
+                                </select>
+                            </div>
+
+                            <!-- Dining purpose -->
+                            <div class="form-group">
+                                <label for="purpose">Dining purpose</label>
+                                <select id="purpose" name="purpose" required>
+                                    <option value="family">Family dinner</option>
+                                    <option value="date">Date night</option>
+                                    <option value="business">Business meeting</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                                Find My Restaurants
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- ===== Results Area (populated by JS) ===== -->
+                    <div id="recommendation-results">
+                        <div class="results-heading">
+                            <span class="eyebrow" style="color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.8rem;">Your Matches</span>
+                            <h2>Recommended for <em>you</em></h2>
+                        </div>
+                        <div class="restaurants-grid" id="results-list">
+                            <!-- JavaScript fills this in -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Savour<span>&amp;Co</span></div>
+                    <p>Connecting diners with their next favourite table since 2026.</p>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="restaurants.html">Restaurants</a></li>
+                        <li><a href="recommend.html">Recommend</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="bill.html">Bill Calculator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savour&amp;Co. Built for COS10005 Web Development - Swinburne University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

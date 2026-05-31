@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserve your table on Savour - quick, secure, and confirmed in minutes.">
+    <title>Reserve Your Table - Savour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header & Navigation (active = Reserve) ===== -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">Savour<span>&amp;Co</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="reservation.html" class="active">Reserve</a></li>
+                    <li><a href="bill.html">Bill Calculator</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Page Banner ===== -->
+        <section class="page-banner">
+            <div class="container">
+                <span class="eyebrow">Book Your Table</span>
+                <h1>Reserve <em>now</em></h1>
+                <p>Fill in your details to confirm your booking. A small deposit secures your table.</p>
+            </div>
+        </section>
+
+        <!-- ===== Reservation Form ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="form-container">
+                    <div id="form-summary" class="form-summary"></div>
+
+                    <!--
+                        Form method = POST, action sends data to the Mercury server.
+                        Replace it000000 with your actual Mercury username when deploying.
+                    -->
+                    <form id="reservation-form"
+                          method="POST"
+                          action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php"
+                          novalidate>
+
+                        <h2 class="form-section-title">Your Details</h2>
+
+                        <!-- Full name -->
+                        <div class="form-group">
+                            <label for="full-name">Full name <span class="required">*</span></label>
+                            <input type="text" id="full-name" name="full-name" placeholder="Jane Citizen">
+                            <p class="error-message" id="error-full-name"></p>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com">
+                                <p class="error-message" id="error-email"></p>
+                            </div>
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="0412345678">
+                                <p class="error-message" id="error-phone"></p>
+                            </div>
+                        </div>
+
+                        <h2 class="form-section-title">Reservation Details</h2>
+
+                        <!-- Restaurant selection - dropdown, pre-filled from URL if applicable -->
+                        <div class="form-group">
+                            <label for="restaurant">Choose a restaurant <span class="required">*</span></label>
+                            <select id="restaurant" name="restaurant">
+                                <option value="">-- Select a restaurant --</option>
+                                <option value="1">The Velvet Bistro (French) - Deposit $50</option>
+                                <option value="2">Sakura Garden (Japanese) - Deposit $30</option>
+                                <option value="3">Spice Route (Indian) - Deposit $20</option>
+                                <option value="4">La Bella Trattoria (Italian) - Deposit $25</option>
+                                <option value="5">Olive &amp; Vine (Mediterranean) - Deposit $40</option>
+                                <option value="6">Bahar Grill (Middle Eastern) - Deposit $20</option>
+                            </select>
+                            <p class="helper-text">You can change your restaurant at any time.</p>
+                            <p class="error-message" id="error-restaurant"></p>
+                        </div>
+
+                        <!-- Live Deposit Display - updated by JS -->
+                        <div class="deposit-display">
+                            <div class="label">Required Deposit</div>
+                            <div class="amount" id="deposit-amount">$0</div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Date -->
+                            <div class="form-group">
+                                <label for="reservation-date">Date <span class="required">*</span></label>
+                                <input type="date" id="reservation-date" name="reservation-date">
+                                <p class="error-message" id="error-reservation-date"></p>
+                            </div>
+                            <!-- Time -->
+                            <div class="form-group">
+                                <label for="reservation-time">Time <span class="required">*</span></label>
+                                <input type="time" id="reservation-time" name="reservation-time">
+                                <p class="error-message" id="error-reservation-time"></p>
+                            </div>
+                        </div>
+
+                        <!-- Number of people -->
+                        <div class="form-group">
+                            <label for="people">Number of people <span class="required">*</span></label>
+                            <input type="number" id="people" name="people" min="1" placeholder="2">
+                            <p class="error-message" id="error-people"></p>
+                        </div>
+
+                        <!-- Special requests -->
+                        <div class="form-group">
+                            <label for="special-requests">Special requests (optional)</label>
+                            <textarea id="special-requests" name="special-requests" placeholder="Allergies, occasion, seating preferences..."></textarea>
+                        </div>
+
+                        <h2 class="form-section-title">Deposit Payment</h2>
+
+                        <!-- Payment method -->
+                        <div class="form-group">
+                            <label>Deposit method <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="deposit-method" value="voucher"> 🎟 Voucher
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="deposit-method" value="online"> 💳 Online payment
+                                </label>
+                            </div>
+                            <p class="error-message" id="error-deposit-method"></p>
+                        </div>
+
+                        <!-- Conditional: Voucher code (only shown if Voucher selected) -->
+                        <div class="form-group conditional-field" id="voucher-section">
+                            <label for="voucher-code">Voucher code</label>
+                            <input type="text" id="voucher-code" name="voucher-code" maxlength="12" placeholder="123456789012">
+                            <p class="helper-text">12-digit code from your voucher.</p>
+                            <p class="error-message" id="error-voucher-code"></p>
+                        </div>
+
+                        <!-- Conditional: Credit card (only shown if Online Payment selected) -->
+                        <div class="conditional-field" id="card-section">
+                            <div class="form-group">
+                                <label for="card-type">Card type</label>
+                                <select id="card-type" name="card-type">
+                                    <option value="visa">Visa (16 digits)</option>
+                                    <option value="mastercard">Mastercard (16 digits)</option>
+                                    <option value="amex">American Express (15 digits)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-number">Card number</label>
+                                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                                <p class="helper-text">Test data only — please do not enter a real card number.</p>
+                                <p class="error-message" id="error-card-number"></p>
+                            </div>
+                        </div>
+
+                        <!-- Billing email + same-as checkbox -->
+                        <div class="form-group">
+                            <label for="billing-email">Billing email address <span class="required">*</span></label>
+                            <input type="email" id="billing-email" name="billing-email" placeholder="billing@example.com">
+                            <label class="checkbox-option" style="margin-top: 0.5rem;">
+                                <input type="checkbox" id="same-email"> Same as email address above
+                            </label>
+                            <p class="error-message" id="error-billing-email"></p>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; margin-top: 1rem;">
+                            Confirm Reservation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Savour<span>&amp;Co</span></div>
+                    <p>Connecting diners with their next favourite table since 2026.</p>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="restaurants.html">Restaurants</a></li>
+                        <li><a href="recommend.html">Recommend</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="bill.html">Bill Calculator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savour&amp;Co. Built for COS10005 Web Development - Swinburne University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

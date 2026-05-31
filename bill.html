@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estimate your bill before you arrive - pick your restaurant, group size, and dishes.">
+    <title>Bill Calculator - Savour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header & Navigation (active = Bill Calculator) ===== -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">Savour<span>&amp;Co</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restaurants.html">Restaurants</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="reservation.html">Reserve</a></li>
+                    <li><a href="bill.html" class="active">Bill Calculator</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Page Banner ===== -->
+        <section class="page-banner">
+            <div class="container">
+                <span class="eyebrow">Plan Your Budget</span>
+                <h1>Estimate your <em>bill</em></h1>
+                <p>Pick a restaurant, your group size, and any dishes you've got your eye on. We'll add it all up live — including the service charge for larger groups.</p>
+            </div>
+        </section>
+
+        <!-- ===== Bill Calculator ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="bill-grid">
+
+                    <!-- LEFT: Form -->
+                    <div class="bill-form" id="bill-form">
+                        <h2 class="form-section-title">Your Selection</h2>
+
+                        <div class="form-group">
+                            <label for="bill-restaurant">Restaurant</label>
+                            <select id="bill-restaurant" name="bill-restaurant">
+                                <option value="">-- Select a restaurant --</option>
+                                <option value="1">The Velvet Bistro (French)</option>
+                                <option value="2">Sakura Garden (Japanese)</option>
+                                <option value="3">Spice Route (Indian)</option>
+                                <option value="4">La Bella Trattoria (Italian)</option>
+                                <option value="5">Olive &amp; Vine (Mediterranean)</option>
+                                <option value="6">Bahar Grill (Middle Eastern)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bill-people">Number of people</label>
+                            <input type="number" id="bill-people" min="1" value="2">
+                            <p class="helper-text">Groups of 6 or more incur a 10% service charge.</p>
+                        </div>
+
+                        <h2 class="form-section-title">Optional Dishes</h2>
+                        <p class="helper-text" style="margin-bottom: 1rem;">Tick any dishes you'd like to add on top of the per-person average.</p>
+                        <div id="dish-list">
+                            <p class="helper-text">Select a restaurant to see the menu.</p>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Live Summary -->
+                    <aside class="bill-summary">
+                        <h3>Estimated Bill</h3>
+                        <div class="line">
+                            <span>Restaurant</span>
+                            <span id="summary-restaurant">Not selected</span>
+                        </div>
+                        <div class="line">
+                            <span>People</span>
+                            <span id="summary-people">0</span>
+                        </div>
+                        <div class="line">
+                            <span>Base cost</span>
+                            <span id="summary-base">$0.00</span>
+                        </div>
+                        <div class="line">
+                            <span>Dishes</span>
+                            <span id="summary-dishes">$0.00</span>
+                        </div>
+                        <div class="line">
+                            <span>Service (10% for 6+)</span>
+                            <span id="summary-service">$0.00</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span id="summary-total">$0.00</span>
+                        </div>
+                        <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                            This estimate updates live as you change your selection. Final bill may vary based on actual orders.
+                        </p>
+                        <a href="reservation.html" class="btn btn-gold" style="margin-top: 1.5rem; width: 100%;">Reserve a Table</a>
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Savour<span>&amp;Co</span></div>
+                    <p>Connecting diners with their next favourite table since 2026.</p>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="restaurants.html">Restaurants</a></li>
+                        <li><a href="recommend.html">Recommend</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="bill.html">Bill Calculator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savour&amp;Co. Built for COS10005 Web Development - Swinburne University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

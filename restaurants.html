@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our curated selection of restaurants on Savour - from French bistros to Japanese omakase.">
+    <title>Restaurants - Savour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ===== Header & Navigation (active = Restaurants) ===== -->
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">Savour<span>&amp;Co</span></a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restaurants.html" class="active">Restaurants</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="reservation.html">Reserve</a></li>
+                    <li><a href="bill.html">Bill Calculator</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Page Banner ===== -->
+        <section class="page-banner">
+            <div class="container">
+                <span class="eyebrow">Our Collection</span>
+                <h1>Browse <em>restaurants</em></h1>
+                <p>Six hand-picked venues spanning every cuisine, occasion, and budget. Click "Reserve" on any card to start booking.</p>
+            </div>
+        </section>
+
+        <!-- ===== Restaurant Cards Grid ===== -->
+        <section class="section">
+            <div class="container">
+                <div class="restaurants-grid">
+
+                    <!-- ========== Restaurant 1: The Velvet Bistro ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant1.svg" alt="The Velvet Bistro - French restaurant with wine glass illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">French</span>
+                            <h3>The Velvet Bistro</h3>
+                            <p class="description">
+                                An intimate Parisian-inspired bistro in the heart of the city. Velvet banquettes,
+                                hand-poured candles, and a carefully curated wine cellar make this the perfect
+                                setting for romantic evenings and refined business dinners.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Coq au Vin</span><span class="dish-price">$38</span></li>
+                                <li><span class="dish-name">Beef Bourguignon</span><span class="dish-price">$42</span></li>
+                                <li><span class="dish-name">Crème Brûlée</span><span class="dish-price">$14</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$95</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$50</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=1" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                    <!-- ========== Restaurant 2: Sakura Garden ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant2.svg" alt="Sakura Garden - Japanese restaurant with sushi illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">Japanese</span>
+                            <h3>Sakura Garden</h3>
+                            <p class="description">
+                                A serene Japanese dining room offering omakase tasting menus and seasonal kaiseki.
+                                Our chefs source the freshest fish daily and prepare each dish with traditional techniques
+                                rooted in centuries of culinary heritage.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Omakase Sushi Set</span><span class="dish-price">$55</span></li>
+                                <li><span class="dish-name">Wagyu Tataki</span><span class="dish-price">$32</span></li>
+                                <li><span class="dish-name">Matcha Tiramisu</span><span class="dish-price">$12</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$65</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$30</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=2" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                    <!-- ========== Restaurant 3: Spice Route ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant3.svg" alt="Spice Route - Indian restaurant with curry bowl illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">Indian</span>
+                            <h3>Spice Route</h3>
+                            <p class="description">
+                                Authentic North and South Indian cuisine prepared by chefs trained in Delhi and Chennai.
+                                Aromatic curries, tandoor specialities, and an extensive vegan and halal menu make
+                                Spice Route a welcoming spot for families and groups.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Butter Chicken</span><span class="dish-price">$22</span></li>
+                                <li><span class="dish-name">Lamb Rogan Josh</span><span class="dish-price">$26</span></li>
+                                <li><span class="dish-name">Garlic Naan</span><span class="dish-price">$5</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$45</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$20</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=3" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                    <!-- ========== Restaurant 4: La Bella Trattoria ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant4.svg" alt="La Bella Trattoria - Italian restaurant with pasta plate illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">Italian</span>
+                            <h3>La Bella Trattoria</h3>
+                            <p class="description">
+                                A family-run trattoria serving handmade pasta, wood-fired pizzas, and slow-cooked
+                                Italian classics. Warm hospitality and generous portions make this the kind of
+                                neighbourhood favourite you'll keep coming back to.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Truffle Risotto</span><span class="dish-price">$28</span></li>
+                                <li><span class="dish-name">Osso Buco</span><span class="dish-price">$36</span></li>
+                                <li><span class="dish-name">Tiramisu</span><span class="dish-price">$12</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$55</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$25</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=4" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                    <!-- ========== Restaurant 5: Olive & Vine ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant5.svg" alt="Olive & Vine - Mediterranean restaurant with olive branch illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">Mediterranean</span>
+                            <h3>Olive &amp; Vine</h3>
+                            <p class="description">
+                                A modern Mediterranean kitchen drawing from Greek, Spanish, and Lebanese traditions.
+                                Bright flavours, charred meats, and an extensive vegan and halal menu served in a
+                                sun-drenched dining room with views of the open kitchen.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Grilled Lamb Souvlaki</span><span class="dish-price">$32</span></li>
+                                <li><span class="dish-name">Seafood Paella</span><span class="dish-price">$38</span></li>
+                                <li><span class="dish-name">Mezze Platter</span><span class="dish-price">$22</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$75</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$40</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=5" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                    <!-- ========== Restaurant 6: Bahar Grill ========== -->
+                    <article class="restaurant-card">
+                        <div class="card-image">
+                            <img src="images/restaurant6.svg" alt="Bahar Grill - Middle Eastern restaurant with grill illustration">
+                        </div>
+                        <div class="card-body">
+                            <span class="cuisine-tag">Middle Eastern</span>
+                            <h3>Bahar Grill</h3>
+                            <p class="description">
+                                A laid-back Middle Eastern grill house specialising in charcoal-roasted meats,
+                                fresh-baked flatbreads, and vibrant mezze. Fully halal-certified with a generous
+                                vegetarian menu — perfect for casual family dinners.
+                            </p>
+                            <ul class="dishes-list">
+                                <li><span class="dish-name">Mixed Grill Plate</span><span class="dish-price">$28</span></li>
+                                <li><span class="dish-name">Lamb Shawarma</span><span class="dish-price">$22</span></li>
+                                <li><span class="dish-name">Hummus &amp; Pita</span><span class="dish-price">$10</span></li>
+                            </ul>
+                            <div class="card-meta">
+                                <div>
+                                    <span class="label">Avg / Person</span>
+                                    <span class="value">$40</span>
+                                </div>
+                                <div>
+                                    <span class="label">Deposit</span>
+                                    <span class="value">$20</span>
+                                </div>
+                            </div>
+                            <a href="reservation.html?id=6" class="btn btn-primary reserve-btn">Reserve This Restaurant</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Savour<span>&amp;Co</span></div>
+                    <p>Connecting diners with their next favourite table since 2026.</p>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="restaurants.html">Restaurants</a></li>
+                        <li><a href="recommend.html">Recommend</a></li>
+                        <li><a href="reservation.html">Reservations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="bill.html">Bill Calculator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Savour&amp;Co. Built for COS10005 Web Development - Swinburne University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
